@@ -1,6 +1,5 @@
 import PageHome from "../pages/home/PageHome";
 import NotFound from "../pages/404/NotFound";
-
 import PageArticle from "../pages/article/PageArticle";
 import CreateArticle from "../pages/article/CreateArticle";
 import UpdateArticle from "../pages/article/UpdateArticle";
@@ -13,7 +12,6 @@ import UpdateService from "../pages/service/UpdateService";
 import PageUser from "../pages/user/PageUser";
 import CreateUser from "../pages/user/CreateUser";
 import UpdateUser from "../pages/user/UpdateUser";
-
 import PageBooking from "../pages/booking/PageBooking";
 import UpdateBooking from "../pages/booking/UpdateBooking";
 import { LoginPage } from "../pages/auth/Login";
