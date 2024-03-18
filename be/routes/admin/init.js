@@ -9,6 +9,7 @@ const staticRouter = require("./static");
 const permissionRouter = require("./permission");
 const adminRouter = require("./admin");
 const cateRouter = require("./category");
+const menuRouter = require("./menu");
 
 router.use(articleRouter);
 router.use(roomRouter);
@@ -18,6 +19,7 @@ router.use(bookingRouter);
 router.use(staticRouter);
 router.use(permissionRouter);
 router.use(adminRouter);
+router.use(menuRouter);
 router.use(cateRouter);
 
 module.exports = router;

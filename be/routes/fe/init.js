@@ -9,9 +9,11 @@ const bookingRouter = require("./booking");
 const contractRouter = require("./contact");
 const voteRouter = require("./vote");
 const CategoryRouter = require("./category");
+const menuRouter = require("./menu");
 
 router.use(roomRouter);
 router.use(articleRouter);
+router.use(menuRouter);
 router.use(authRouter);
 router.use(bookingRouter);
 router.use(contractRouter);
