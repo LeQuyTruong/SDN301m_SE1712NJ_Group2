@@ -27,6 +27,9 @@ import AccountUser from "../pages/account/AccountUser";
 import PageCategory from "../pages/category/PageCategory";
 import CreateCategory from "../pages/category/CreateCategory";
 import UpdateCategory from "../pages/category/UpdateCategory";
+import PageMenu from "../pages/menu/PageMenu";
+import CreateMenu from "../pages/menu/CreateMenu";
+import UpdateMenu from "../pages/menu/UpdateMenu";
 
 export const routes = () =>
 {
@@ -59,7 +62,27 @@ export const routes = () =>
 				},
 			]
 		},
-		
+		{
+			path: "/menu/",
+			children: [
+				{
+					path: "",
+					element: <PageMenu />,
+				},
+				{
+					path: "create",
+					element: <CreateMenu />,
+				},
+				{
+					path: "update/:id",
+					element: <UpdateMenu />,
+				},
+				{
+					path: "*",
+					element: <PageMenu />,
+				},
+			]
+		},
 		{
 			path: "/category/",
 			children: [
