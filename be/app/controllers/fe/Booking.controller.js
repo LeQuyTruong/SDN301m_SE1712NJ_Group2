@@ -14,10 +14,10 @@ exports.webhook = async (req, res) => {
             booking.save();
         }
 
-        return res.redirect('http://localhost:3015/payment/success');
+        return res.redirect('http://localhost:3000/payment/success');
     }
 
-    return res.redirect('http://localhost:3015/payment/error');
+    return res.redirect('http://localhost:3000/payment/error');
     // return res.status(200).json({ data: req.query, status: 200 });
 }
 
@@ -182,7 +182,7 @@ exports.add = async (req, res) => {
             try {
                 let newData = {
                     order_id : booking._id,
-                    url_return : 'http://localhost:3053/api/v1/booking/callback',
+                    url_return : 'http://localhost:9998/api/v1/booking/callback',
                     amount : data.total_money,
                     // url_callback: 'http://localhost:3053/api/v1/booking/callback'
                 }
