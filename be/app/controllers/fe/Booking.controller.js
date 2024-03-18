@@ -133,8 +133,8 @@ exports.add = async (req, res) => {
             port: 465,
             secure: true,
             auth: {
-                user: 'giangpthe161721@fpt.edu.vn', //Tài khoản gmail vừa tạo
-                pass: 'pzang1611' //Mật khẩu tài khoản gmail vừa tạo
+                user: 'giang2002.bq@gmail.com', //Tài khoản gmail vừa tạo
+                pass: 'pzang161102' //Mật khẩu tài khoản gmail vừa tạo
             },
             tls: {
                 // do not fail on invalid certs
@@ -146,7 +146,9 @@ exports.add = async (req, res) => {
             <div style="background-color: #003375; margin: 0 auto; max-width: 600px; ">
                 <div style="padding: 10px; background-color: white;">
                     <h4 style="color: #0d6efd">Xin chào ${data.customer_name}</h4>
-                    <p style="color: black">Haan Resort & Golf xin chân thành cảm ơn bạn đã chọn chúng tôi là địa điểm lưu trú trong chuyến đi của bạn. Chúng tôi xin gửi đến bạn một email về việc đặt phòng của bạn đã được xác nhận và thanh toán thành công tại Resort của chúng tôi. Dưới đây là thông tin chi tiết về đặt phòng của bạn:</p>
+                    <p style="color: black">Haan Resort & Golf xin chân thành cảm ơn bạn đã chọn chúng tôi. 
+                    Chúng tôi xin gửi đến bạn một email về việc đặt phòng của bạn đã được xác nhận và thanh toán thành công tại Resort của chúng tôi. 
+                    Dưới đây là thông tin chi tiết về đặt phòng của bạn:</p>
 
                     <span style="color: black">Tên khách hàng <b>${data.customer_name}</b></span> <br>
                     <span style="color: black">Ngày nhận phòng: <b>${data.check_in}</b></span> <br>
@@ -155,8 +157,10 @@ exports.add = async (req, res) => {
                     <span style="color: black">Số lượng <b>${data.amount_of_people}</b></span><br>
                     <span style="color: black">Tổng tiền: <b>${data.total_money} VNĐ</b></span><br>
                     <span style="color: black">Phương thức thanh toán: <b>Chuyển khoản</b></span><br>
-                    <p>Vui lòng kiểm tra thông tin trên và đảm bảo rằng chúng là chính xác. Nếu có bất kỳ sai sót nào hoặc bạn có bất kỳ yêu cầu nào khác, xin hãy liên hệ với chúng tôi ngay để chúng tôi có thể hỗ trợ bạn tốt nhất.</p>
-                    <p>Nếu bạn có bất kỳ câu hỏi hoặc yêu cầu bổ sung nào, xin hãy liên hệ với chúng tôi bằng cách gọi số điện thoại <b>0909.555.888</b> hoặc gửi email về địa chỉ haan.resort@gmail.com. Chúng tôi sẽ sẵn lòng giúp đỡ bạn.</p>
+                    <p>Vui lòng kiểm tra thông tin trên và đảm bảo rằng chúng là chính xác. Nếu có bất kỳ sai sót nào hoặc bạn có bất kỳ yêu cầu nào khác, 
+                    xin hãy liên hệ với chúng tôi ngay để chúng tôi có thể hỗ trợ bạn tốt nhất.</p>
+                    <p>Nếu bạn có bất kỳ câu hỏi hoặc yêu cầu bổ sung nào, xin hãy liên hệ với chúng tôi bằng cách gọi số điện thoại <b>0909.555.888</b> 
+                    hoặc gửi email về địa chỉ haan.resort@gmail.com. Chúng tôi sẽ sẵn lòng giúp đỡ bạn.</p>
                     <p>
                         <img src="https://www.techopedia.com/wp-content/uploads/2023/03/aee977ce-f946-4451-8b9e-bba278ba5f13.png" style="width: 150px;height: auto" alt="">
                     </p>
@@ -167,8 +171,8 @@ exports.add = async (req, res) => {
             </div>
         `;
         var mainOptions = {
-            from: 'giangpthe161721@fpt.edu.vn',
-            to: "giang2002.bq@gmail.com",
+            from: 'giang2002.bq@gmail.com',
+            to: 'giangpthe161721@fpt.edu.vn',
             subject: '[BOOKING] đặt phòng thành công',
             html: content
         }
@@ -179,17 +183,6 @@ exports.add = async (req, res) => {
                 console.log(' SUCCESS ' +  info.response);
             }
         });
-        // transporter.sendMail(mainOptions, function(err, info){
-        //     if (err) {
-        //         console.log(err);
-        //         //req.flash('mess', 'Lỗi gửi mail: '+err); //Gửi thông báo đến người dùng
-        //         res.redirect('/');
-        //     } else {
-        //         console.log('Message sent: ' +  info.response);
-        //         //req.flash('mess', 'Một email đã được gửi đến tài khoản của bạn'); //Gửi thông báo đến người dùng
-        //         res.redirect('/');
-        //     }
-        // });
 
         if (data.payment_type === 2) {
             try {
