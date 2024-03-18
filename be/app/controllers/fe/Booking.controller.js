@@ -1,6 +1,5 @@
 const Booking = require("./../../models/Booking.model");
 const Room = require("./../../models/Room.model");
-const Discount = require("./../../models/Discount.model");
 
 const nodemailer =  require('nodemailer');
 const moment = require("moment");

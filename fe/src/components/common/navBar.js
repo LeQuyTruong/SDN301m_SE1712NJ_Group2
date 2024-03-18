@@ -69,9 +69,7 @@ export const NavBarPage = () =>
 								Liên hệ
 							</Link>
 
-							<Link className="nav-link" to="/service">
-								Dịch vụ
-							</Link>
+							
 						</Nav>
 						<Nav className="navbar-light">
 							{ !checkLogin() ?
