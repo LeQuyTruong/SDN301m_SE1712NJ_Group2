@@ -100,7 +100,7 @@ const ContactPage = () =>
 									<Form.Control required type="text" name={ 'name' } placeholder="Họ và tên"
 										onChange={ event =>
 										{
-											let value = event && event.target.value.trim() || null;
+											let value = event && event.target.value || null;
 											setField( form, 'name', value, setForm )
 										} }
 										value={ form.name || '' } />
@@ -113,7 +113,7 @@ const ContactPage = () =>
 									<Form.Control required type="email" name={ 'email' } placeholder="Email"
 										onChange={ event =>
 										{
-											let value = event && event.target.value.trim() || null
+											let value = event && event.target.value || null
 											setField( form, 'email', value, setForm )
 										} }
 										value={ form.email || '' } />
@@ -126,7 +126,7 @@ const ContactPage = () =>
 									<Form.Control required type="text" name={ 'subject' } placeholder="Tiêu đề"
 										onChange={ event =>
 										{
-											let value = event && event.target.value.trim() || null
+											let value = event && event.target.value || null
 											setField( form, 'subject', value, setForm )
 										} }
 										value={ form.subject || '' } />
@@ -139,7 +139,7 @@ const ContactPage = () =>
 									<Form.Control as="textarea" rows={ 7 } required type="text" name={ 'message' } placeholder="Nội dung"
 										onChange={ event =>
 										{
-											let value = event && event.target.value.trim() || null
+											let value = event && event.target.value || null
 											setField( form, 'message', value, setForm )
 										} }
 										value={ form.message || '' } />

@@ -82,7 +82,7 @@ const SignUpPage = () =>
 											<Form.Control required type="text" name={ 'name' } placeholder="Nhập họ và tên"
 												onChange={ event =>
 												{
-													let value = event && event.target.value.trim() || null;
+													let value = event && event.target.value || null;
 													setField( form, 'name', value, setForm )
 												} }
 												value={ form.name || '' } />
@@ -96,7 +96,7 @@ const SignUpPage = () =>
 											<Form.Control required type="email" name={ 'email' } placeholder="Nhập email"
 												onChange={ event =>
 												{
-													let value = event && event.target.value.trim() || null;
+													let value = event && event.target.value || null;
 													setField( form, 'email', value, setForm )
 												} }
 												value={ form.email || '' } />
@@ -112,7 +112,7 @@ const SignUpPage = () =>
 											<Form.Control required type="password" name={ 'password' } placeholder="Nhập mật khẩu"
 												onChange={ event =>
 												{
-													let value = event && event.target.value.trim() || null;
+													let value = event && event.target.value || null;
 													setField( form, 'password', value, setForm )
 												} }
 												value={ form.password || '' } />
@@ -127,7 +127,7 @@ const SignUpPage = () =>
 											<Form.Control required type="text" name={ 'phone' } placeholder="Nhập số điện thoại"
 												onChange={ event =>
 												{
-													let value = event && event.target.value.trim() || null;
+													let value = event && event.target.value || null;
 													setField( form, 'phone', value, setForm )
 												} }
 												value={ form.phone || '' } />
@@ -141,7 +141,7 @@ const SignUpPage = () =>
 										{/*	<Form.Control type="text" name={ 'sex' } placeholder="Nhập giới tính "*/}
 										{/*		onChange={ event =>*/}
 										{/*		{*/}
-										{/*			let value = event && event.target.value.trim() || null*/}
+										{/*			let value = event && event.target.value || null*/}
 										{/*			setField( form, 'sex', value, setForm )*/}
 										{/*		} }*/}
 										{/*		value={ form.sex || '' } />*/}
@@ -164,7 +164,7 @@ const SignUpPage = () =>
 											<Form.Control type="date" name={ 'birthday' } placeholder="Nhập ngày sinh "
 												onChange={ event =>
 												{
-													let value = event && event.target.value.trim() || null
+													let value = event && event.target.value || null
 													setField( form, 'birthday', value, setForm )
 												} }
 												value={ form.birthday || '' } />

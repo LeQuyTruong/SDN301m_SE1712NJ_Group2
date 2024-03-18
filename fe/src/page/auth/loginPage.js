@@ -76,7 +76,7 @@ export const SignInPage = () =>
 										<Form.Control required type="email" name={ 'name' } placeholder="Nhập email"
 											onChange={ event =>
 											{
-												let value = event && event.target.value.trim() || null;
+												let value = event && event.target.value || null;
 												console.log( value );
 												setField( form, 'email', value, setForm )
 											} }
@@ -91,7 +91,7 @@ export const SignInPage = () =>
 										<Form.Control required type="password" name={ 'password' } placeholder="Nhập mật khẩu"
 											onChange={ event =>
 											{
-												let value = event && event.target.value.trim() || null
+												let value = event && event.target.value || null
 												setField( form, 'password', value, setForm )
 											} }
 											value={ form.password || '' } />

@@ -6,32 +6,28 @@ import { useDispatch } from "react-redux";
 import { toggleShowLoading } from "../../redux/actions/common";
 import { menuService } from "../../services/feService/menuService";
 
-export const NavBarPage = () =>
-{
+export const NavBarPage = () => {
 
 	//menu activation
-	const [ menus, setMenus ] = useState( [] );
+	const [menus, setMenus] = useState([]);
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
-	const getMenus = async () =>
-	{
-		const response = await menuService.getDataList( {
+	const getMenus = async () => {
+		const response = await menuService.getDataList({
 			page: 1,
 			page_size: 2
-		} );
+		});
 
-		if ( response.status === 200 )
-		{
-			setMenus( response.data.menus )
+		if (response.status === 200) {
+			setMenus(response.data.menus)
 		}
 
 	}
 
-	useEffect( () =>
-	{
+	useEffect(() => {
 		getMenus();
-	}, [] );
+	}, []);
 
 	return (
 		<React.Fragment>
@@ -42,8 +38,8 @@ export const NavBarPage = () =>
 			>
 				<Container>
 					<Navbar.Brand>
-						<Link to={ '/' } className={ 'navbar-brand' }>
-							<img src={'/logo.png'} style={{ width: "100px"}} />
+						<Link to={'/'} className={'navbar-brand'}>
+							{/* <img src={'/logo.png'} style={{ width: "100px"}} /> */}
 						</Link>
 					</Navbar.Brand>
 
@@ -56,14 +52,13 @@ export const NavBarPage = () =>
 							<Link className="nav-link" to="/room">
 								Phòng
 							</Link>
-							{ menus && menus.length > 0 && menus.map( ( item, index ) =>
-							{
+							{menus && menus.length > 0 && menus.map((item, index) => {
 								return (
-									<Link to={ '/menu/' + item._id } key={ item._id } className="nav-link">
-										{ item.name }
+									<Link to={'/menu/' + item._id} key={item._id} className="nav-link">
+										{item.name}
 									</Link>
 								)
-							} ) }
+							})}
 
 							<Link className="nav-link" to="/contact">
 								Liên hệ
@@ -74,31 +69,30 @@ export const NavBarPage = () =>
 							</Link>
 						</Nav>
 						<Nav className="navbar-light">
-							{ !checkLogin() ?
+							{!checkLogin() ?
 								<NavDropdown title="Đăng nhập" id="basic-nav-dropdown">
-									<Link to="/sign-up" className={ 'dropdown-item' }>
+									<Link to="/sign-up" className={'dropdown-item'}>
 										Đăng ký
 									</Link>
-									<Link to="/sign-in" className={ 'dropdown-item' }>
+									<Link to="/sign-in" className={'dropdown-item'}>
 										Đăng nhập
 									</Link>
 								</NavDropdown>
 								: <>
 
-									<NavDropdown title={ 'Hi, ' + getUser()?.name } id="user-nav-dropdown" className="user-nav">
-										<Link to="/account" className={ 'dropdown-item' }>Tài khoản</Link>
-										<Link to="/booking" className={ 'dropdown-item' }>Lịch sử đặt phòng</Link>
-										<Link to='#' onClick={ async () =>
-										{
+									<NavDropdown title={'Hi, ' + getUser()?.name} id="user-nav-dropdown" className="user-nav">
+										<Link to="/account" className={'dropdown-item'}>Tài khoản</Link>
+										<Link to="/booking" className={'dropdown-item'}>Lịch sử đặt phòng</Link>
+										<Link to='#' onClick={async () => {
 
-											dispatch( toggleShowLoading( true ) )
+											dispatch(toggleShowLoading(true))
 
-											await timeDelay( 500 );
+											await timeDelay(500);
 											localStorage.clear();
 											window.location.href = '/'
-											dispatch( toggleShowLoading( false ) )
+											dispatch(toggleShowLoading(false))
 
-										} } className={ 'dropdown-item' }>Đăng xuất</Link>
+										}} className={'dropdown-item'}>Đăng xuất</Link>
 									</NavDropdown>
 								</>
 							}
