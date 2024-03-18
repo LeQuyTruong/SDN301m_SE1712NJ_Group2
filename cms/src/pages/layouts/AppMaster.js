@@ -42,9 +42,6 @@ function AppMaster ()
 										<Link to="/booking" className={ 'nav-link' }>Quản lý đặt phòng</Link>
 										<Link to="/category" className={ 'nav-link' }>Danh mục</Link>
 										<Link to="/room" className={ 'nav-link' }>Phòng</Link>
-										<Link to="/discount" className={ 'nav-link' }>Mã giảm giá</Link>
-										<Link to="/service" className={ 'nav-link' }>Dịch Vụ</Link>
-										<Link to="/menu" className={ 'nav-link' }>Menu</Link>
 										<Link to="/article" className={ 'nav-link' }>Tin tức</Link>
 										<Link to="/user" className={ 'nav-link' }>Thành viên</Link>
 										<NavDropdown title="Phân quyền" id="basic-nav-dropdown">

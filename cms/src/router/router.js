@@ -6,9 +6,6 @@ import UpdateArticle from "../pages/article/UpdateArticle";
 import PageRoom from "../pages/room/PageRoom";
 import CreateRoom from "../pages/room/CreateRoom";
 import UpdateRoom from "../pages/room/UpdateRoom";
-import PageService from "../pages/service/PageService";
-import CreateService from "../pages/service/CreateService";
-import UpdateService from "../pages/service/UpdateService";
 import PageUser from "../pages/user/PageUser";
 import CreateUser from "../pages/user/CreateUser";
 import UpdateUser from "../pages/user/UpdateUser";
@@ -27,9 +24,6 @@ import CreateAdmin from "../pages/admin/CreateAdmin";
 import UpdateAdmin from "../pages/admin/UpdateAdmin";
 import PageErrorPermission from "../pages/errors/403";
 import AccountUser from "../pages/account/AccountUser";
-import PageMenu from "../pages/menu/PageMenu";
-import CreateMenu from "../pages/menu/CreateMenu";
-import UpdateMenu from "../pages/menu/UpdateMenu";
 import PageCategory from "../pages/category/PageCategory";
 import CreateCategory from "../pages/category/CreateCategory";
 import UpdateCategory from "../pages/category/UpdateCategory";
@@ -66,27 +60,7 @@ export const routes = () =>
 				},
 			]
 		},
-		{
-			path: "/menu/",
-			children: [
-				{
-					path: "",
-					element: <PageMenu />,
-				},
-				{
-					path: "create",
-					element: <CreateMenu />,
-				},
-				{
-					path: "update/:id",
-					element: <UpdateMenu />,
-				},
-				{
-					path: "*",
-					element: <PageMenu />,
-				},
-			]
-		},
+		
 		{
 			path: "/category/",
 			children: [
@@ -131,27 +105,6 @@ export const routes = () =>
 					path: "updatePayment/:id",
 					element: <UpdatePayment />,
 				},
-			]
-		},
-		{
-			path: "/service/",
-			children: [
-				{
-					path: "",
-					element: <PageService />,
-				},
-				{
-					path: "create",
-					element: <CreateService />,
-				},
-				{
-					path: "update/:id",
-					element: <UpdateService />,
-				},
-				{
-					path: "*",
-					element: <PageService />,
-				}
 			]
 		},
 		{
