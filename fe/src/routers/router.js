@@ -14,6 +14,7 @@ import { FormBooking } from "../components/form/formBooking";
 import { BookingPage } from "../page/others/BookingPage";
 import { PaymentStatus } from "../components/booking/paymentStatus";
 import { ServiceDetail } from "../components/room-service/serviceDetail";
+import  {PaymentPage}  from "../page/others/paymentPage.js";
 
 export const Routers = [
 	//profile Section(User Profile)
@@ -68,7 +69,11 @@ export const Routers = [
 		title: "Đặt phòng",
 		component: <FormBooking />
 	},
-
+	{
+		path: "/payment/:id",
+		title: "payment",
+		component: <PaymentPage />
+	},
 	{
 		path: "/booking",
 		title: "Lịch sử đặt phòng",

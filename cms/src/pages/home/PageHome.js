@@ -88,6 +88,7 @@ export default function PageHome ()
 					}
 				],
 			} )
+			console.log("money:",response);
 			setLoadingChartStatus( false );
 		}
 	}

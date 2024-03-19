@@ -14,15 +14,33 @@ const bookingApi = {
         }
 	},
 
-    async update(id, data) {
-        try {
-            return await axiosClient.put(`admin/booking/update/${id}`, data);
-        } catch (error) {
-            return {
-                status: 'error'
-            }
+   async update(id, data) {
+    try {
+        return await axiosClient.put(`admin/booking/update/${id}`, data);
+    } catch (error) {
+        return {
+            status: 'error'
+        };
+    }
+},
+async updatePayment(id, data) {
+    try {
+        return await axiosClient.put(`admin/booking/updatePayment/${id}`, data);
+    } catch (error) {
+        return {
+            status: 'error'
+        };
+    }
+},
+async findByIdPayment(id) {
+    try {
+        return await axiosClient.get(`admin/booking/updatePayment/${id}`);
+    } catch (error) {
+        return {
+            status: 'error'
         }
-    },
+    }
+},
 
     async findById(id) {
         try {

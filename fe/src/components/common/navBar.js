@@ -39,8 +39,8 @@ export const NavBarPage = () =>
 				className="navbar
 				navbar-expand ftco-navbar-light navbar-dark"
 			// id="ftco-navbar"
-			>
-				<Container>
+			>	
+				<Container className="headerHome" >
 					<Navbar.Brand>
 						<Link to={ '/' } className={ 'navbar-brand' }>
 							<img src={'/logo.png'} style={{ width: "100px"}} />
@@ -50,28 +50,26 @@ export const NavBarPage = () =>
 					<Navbar.Toggle aria-controls="basic-navbar-nav" />
 					<Navbar.Collapse id="basic-navbar-nav" >
 						<Nav className="ml-auto justify-content-end">
-							<Link className="nav-link" to="/">
+							<Link className="nav-link" to="/" style={{color:'black'}}>
 								Trang chủ
 							</Link>
-							<Link className="nav-link" to="/room">
+							<Link className="nav-link" to="/room" style={{color:'black'}}>
 								Phòng
 							</Link>
 							{ menus && menus.length > 0 && menus.map( ( item, index ) =>
 							{
 								return (
-									<Link to={ '/menu/' + item._id } key={ item._id } className="nav-link">
+									<Link to={ '/menu/' + item._id } key={ item._id } className="nav-link" style={{color:'black'}}>
 										{ item.name }
 									</Link>
 								)
 							} ) }
 
-							<Link className="nav-link" to="/contact">
+							<Link className="nav-link" to="/contact" style={{color:'black'}}>
 								Liên hệ
 							</Link>
 
-							<Link className="nav-link" to="/service">
-								Dịch vụ
-							</Link>
+							
 						</Nav>
 						<Nav className="navbar-light">
 							{ !checkLogin() ?
@@ -82,7 +80,7 @@ export const NavBarPage = () =>
 									<Link to="/sign-in" className={ 'dropdown-item' }>
 										Đăng nhập
 									</Link>
-								</NavDropdown>
+								</NavDropdown >
 								: <>
 
 									<NavDropdown title={ 'Hi, ' + getUser()?.name } id="user-nav-dropdown" className="user-nav">

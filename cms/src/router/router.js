@@ -1,6 +1,6 @@
 import PageHome from "../pages/home/PageHome";
 import NotFound from "../pages/404/NotFound";
-import PageDiscount from "../pages/discount/PageDiscount";
+
 import PageArticle from "../pages/article/PageArticle";
 import CreateArticle from "../pages/article/CreateArticle";
 import UpdateArticle from "../pages/article/UpdateArticle";
@@ -13,8 +13,7 @@ import UpdateService from "../pages/service/UpdateService";
 import PageUser from "../pages/user/PageUser";
 import CreateUser from "../pages/user/CreateUser";
 import UpdateUser from "../pages/user/UpdateUser";
-import CreateDiscount from "../pages/discount/CreateDiscount";
-import UpdateDiscount from "../pages/discount/UpdateDiscount";
+
 import PageBooking from "../pages/booking/PageBooking";
 import UpdateBooking from "../pages/booking/UpdateBooking";
 import { LoginPage } from "../pages/auth/Login";
@@ -36,6 +35,7 @@ import UpdateMenu from "../pages/menu/UpdateMenu";
 import PageCategory from "../pages/category/PageCategory";
 import CreateCategory from "../pages/category/CreateCategory";
 import UpdateCategory from "../pages/category/UpdateCategory";
+import UpdatePayment from "../pages/booking/UpdatePayment";
 
 export const routes = () =>
 {
@@ -46,27 +46,7 @@ export const routes = () =>
 			index: true,
 			exact: true
 		},
-		{
-			path: "/discount/",
-			children: [
-				{
-					path: "",
-					element: <PageDiscount />
-				},
-				{
-					path: "create",
-					element: <CreateDiscount />
-				},
-				{
-					path: "update/:id",
-					element: <UpdateDiscount />
-				},
-				{
-					path: "*",
-					element: <PageDiscount />,
-				},
-			]
-		},
+		
 		{
 			path: "/article/",
 			children: [
@@ -148,6 +128,10 @@ export const routes = () =>
 				{
 					path: "*",
 					element: <PageBooking />,
+				},
+				{
+					path: "updatePayment/:id",
+					element: <UpdatePayment />,
 				},
 			]
 		},

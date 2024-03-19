@@ -2,8 +2,13 @@ import { buildFilter } from "../../common/helper";
 import { deleteMethod, getMethod, postMethod, putMethod, uploadFile } from "../baseService";
 
 export const OtherService = {
-	async getListDiscount(filters) {
+	async getListDiscount(filters,isSet,setSearchParams) {
 		const params = buildFilter(filters);
+		if ( isSet )
+		{
+			setSearchParams( params )
+
+		}
 		return await getMethod('discount', params);
 	},
 
