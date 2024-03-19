@@ -12,12 +12,12 @@ import { RoomService } from "../../services/feService/roomService";
 import { BookingService } from "../../services/feService/bookingService";
 
 const paymentType = [
+	// {
+	// 	_id: 1,
+	// 	name: 'Tiền mặt'
+	// },
 	{
 		_id: 1,
-		name: 'Tiền mặt'
-	},
-	{
-		_id: 2,
 		name: 'Online'
 	}
 ];
@@ -25,7 +25,7 @@ export const FormBooking = () => {
 	document.title = 'Đặt phòng';
 
 	const [rooms, setRooms] = useState([]);
-	const [discounts, setDiscounts] = useState([]);
+	
 
 	const [form, setForm] = useState({
 		check_in: null,
@@ -33,8 +33,7 @@ export const FormBooking = () => {
 		amount_of_people: null,
 		room_id: null,
 		user_id: null,
-		discount_id: null,
-		discount: 0,
+		
 		status: 'PENDING',
 		status_payment: 'UNPAID',
 		price: 0,
@@ -58,7 +57,7 @@ export const FormBooking = () => {
 
 	useEffect(() => {
 		getDataList();
-		getListDiscount();
+		
 		let data = { ...form };
 		if (user) {
 			data.user_id = user._id;
@@ -83,15 +82,7 @@ export const FormBooking = () => {
 		}
 	}, [form.room_id, form.check_in, form.check_out]);
 
-	useEffect(() => {
-		if (form.discount_id && discounts?.length > 0) {
-			let data = discounts.find(item => item._id === form.discount_id);
-			let discount = data?.price || 0;
-			setForm({ ...form, discount: discount });
-
-		}
-	}, [form.discount_id])
-
+	
 
 
 	const handleSubmit = async (e) => {
@@ -99,13 +90,14 @@ export const FormBooking = () => {
 		if (e?.currentTarget?.checkValidity() === false) {
 			e.stopPropagation();
 		} else {
-			form.total_money = form.price - form.discount;
+			form.total_money = form.price ;
 			form.payment_type = Number(form.payment_type);
-			form.discount_id = Number(form.discount_id);
+			
 			dispatch(toggleShowLoading(true));
 
 			const response = await BookingService.createData(form);
 			console.log('----------------- response booking: ', response)
+
 			if (response?.status === 200 && response?.data) {
 				toast('đặt phòng thành công!', { type: 'success', autoClose: 900 });
 				resetForm();
@@ -119,7 +111,7 @@ export const FormBooking = () => {
 					resetForm();
 				}
 				if (getUser()) {
-					navigate('/booking');
+					navigate('/payment/'+response.data._id);
 				} else {
 					// view mới
 					window.location.href = '/payment/booking-success';
@@ -142,8 +134,7 @@ export const FormBooking = () => {
 			amount_of_people: null,
 			room_id: null,
 			user_id: null,
-			discount_id: null,
-			discount: 0,
+			
 			status: 'PENDING',
 			status_payment: 'UNPAID',
 			price: 0,
@@ -168,15 +159,7 @@ export const FormBooking = () => {
 		dispatch(toggleShowLoading(false));
 	};
 
-	const getListDiscount = async () => {
-		const rs = await OtherService.getListDiscount({ page: 1, page_size: 1000, status: 1 });
-		if (rs?.status === 200) {
-
-			setDiscounts(rs?.data?.discounts || []);
-		} else {
-			setDiscounts([]);
-		}
-	}
+	
 
 
 	return (
@@ -250,12 +233,7 @@ export const FormBooking = () => {
 										type={'text'} error={'Vui lòng chọn phòng.'} />
 								</Form.Group>
 
-								<Form.Group className="mb-3 col-xl-6">
-									<SelectBase form={form} setForm={setForm} name={'discount_id'}
-										label={'Mã giảm giá: '} data={discounts}
-										key_name={'discount_id'} required={false} placeholder={'Chọn mã giảm giá'}
-										type={'text'} />
-								</Form.Group>
+								
 
 								<Form.Group className="mb-3 col-xl-6">
 									<SelectBase form={form} setForm={setForm} name={'payment_type'}
@@ -279,14 +257,11 @@ export const FormBooking = () => {
 										<p className="text-dark fs-19">{customNumber(form.price, '.', 'đ')}</p>
 									</Form.Group>
 
-									<Form.Group className="mb-3 col-xl-4">
-										<Form.Label className="fs-19">Discount: </Form.Label>
-										<p className="text-dark fs-19">{customNumber(form.discount, '.', 'đ')}</p>
-									</Form.Group>
+									
 
 									<Form.Group className="mb-3 col-xl-4">
 										<Form.Label className="fs-19">Tổng tiền: </Form.Label>
-										<p className="text-dark fs-19">{customNumber(form.price - form.discount, '.', 'đ')}</p>
+										<p className="text-dark fs-19">{customNumber(form.price, '.', 'đ')}</p>
 									</Form.Group>
 
 									<Form.Group className="mb-3 col-12 d-flex justify-content-center">
@@ -302,4 +277,3 @@ export const FormBooking = () => {
 		</React.Fragment>
 	);
 };
-

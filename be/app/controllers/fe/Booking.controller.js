@@ -1,6 +1,6 @@
 const Booking = require("./../../models/Booking.model");
 const Room = require("./../../models/Room.model");
-const Discount = require("./../../models/Discount.model");
+
 
 const nodemailer =  require('nodemailer');
 const moment = require("moment");
@@ -113,15 +113,7 @@ exports.add = async (req, res) => {
         data.total_money = room.price * days;
 
 
-        // check discount
-        if (data.discount_id) {
-            let codeDiscount = await Discount.findById({ _id: data.discount_id });
-            if (codeDiscount) {
-                data.discount = codeDiscount.price;
-                data.total_money -= codeDiscount.price;
-                if (data.total_money < 0) data.total_money = 0;
-            }
-        }
+       
 
         const booking = new Booking(data);
         await booking.save();
@@ -196,7 +188,7 @@ exports.add = async (req, res) => {
                 res.status(500).json({ message: err });
             }
         }
-        return res.status(200).json({ data: data, status : 200 });
+        return res.status(200).json({ data: booking, status : 200 });
     } catch (e){
         res.status(501)
         res.send({ error: e })

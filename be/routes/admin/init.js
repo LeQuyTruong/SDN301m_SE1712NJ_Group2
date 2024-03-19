@@ -3,7 +3,7 @@ var router = express.Router();
 const articleRouter = require("./article");
 const serviceRouter = require("./service");
 const roomRouter = require("./room");
-const discountRouter = require("./discount");
+
 const roleRouter = require("./role");
 const userRouter = require("./user");
 const bookingRouter = require("./booking");
@@ -16,7 +16,7 @@ const cateRouter = require("./category");
 router.use(articleRouter);
 router.use(serviceRouter);
 router.use(roomRouter);
-router.use(discountRouter);
+
 router.use(userRouter);
 router.use(roleRouter);
 router.use(bookingRouter);
