@@ -68,9 +68,9 @@ const SignUpPage = () =>
 						<Card className="auth-box">
 							<Card.Body className="w-100">
 								<div className="text-center">
-									<Link to={ '/' } className={ 'navbar-brand' }>
+									{/* <Link to={ '/' } className={ 'navbar-brand' }>
 										<img src={'/logo.png'} style={{ width: "100px"}} />
-									</Link>
+									</Link> */}
 									<h3 className="text-white fs-22">
 										Đăng ký
 									</h3>

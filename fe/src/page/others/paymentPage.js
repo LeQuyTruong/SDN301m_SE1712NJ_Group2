@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import "./paymentPage.css"; 
+import "./paymentPage.css";
 import { BookingService } from "../../services/feService/bookingService.js";
 import { customNumber } from "../../common/helper";
 
@@ -30,10 +30,12 @@ export const PaymentPage = () => {
         </div>
 
         <div className="divider"></div>
-  
+
         <div className="qr-container">
           <h2>Thanh toán qua mã QR:</h2>
-          <img className="qr-code" src='../momo/qr.jpg' alt="../momo/bef6fb02-6b2b-432d-a898-8119386c8845.jpg" />
+          <div class="text-center">
+            <iframe style={{ alignContent: 'center', height: "650px", width: "450px" }} src={`https://nhantien.momo.vn/0886031112/${bookingInfo.total_money}`}></iframe>
+          </div>
         </div>
       </div>
     );

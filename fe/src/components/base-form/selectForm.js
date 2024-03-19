@@ -15,7 +15,7 @@ export const SelectBase = ( props ) =>
 			className=" form-control text-secondary" required
 			 onChange={ ( event ) =>
 			{
-				let value = event && event.target.value && event.target.value.trim() || null;
+				let value = event && event.target.value && event.target.value || null;
 
 				setField( props.form, props.key_name, value, props.setForm );
 			} }>
