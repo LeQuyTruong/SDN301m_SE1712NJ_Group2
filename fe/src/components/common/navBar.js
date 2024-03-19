@@ -42,9 +42,9 @@ export const NavBarPage = () =>
 			>	
 				<Container className="headerHome" >
 					<Navbar.Brand>
-						<Link to={ '/' } className={ 'navbar-brand' }>
+						{/* <Link to={ '/' } className={ 'navbar-brand' }>
 							<img src={'/logo.png'} style={{ width: "100px"}} />
-						</Link>
+						</Link> */}
 					</Navbar.Brand>
 
 					<Navbar.Toggle aria-controls="basic-navbar-nav" />

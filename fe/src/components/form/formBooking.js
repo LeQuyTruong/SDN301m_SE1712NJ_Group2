@@ -12,12 +12,12 @@ import { RoomService } from "../../services/feService/roomService";
 import { BookingService } from "../../services/feService/bookingService";
 
 const paymentType = [
-	// {
-	// 	_id: 1,
-	// 	name: 'Tiền mặt'
-	// },
 	{
 		_id: 1,
+		name: 'Tiền mặt'
+	},
+	{
+		_id: 2,
 		name: 'Online'
 	}
 ];

@@ -22,7 +22,7 @@ export const InputBase = ( props ) =>
 			
 				onChange={ event =>
 				{
-					let value = event && event.target.value.trim() || null;
+					let value = event && event.target.value || null;
 					if(props.maxLength && value?.length > props.maxLength) {
 						value = value.slice(0, props.maxLength)
 					}

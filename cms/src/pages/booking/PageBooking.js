@@ -137,7 +137,7 @@ export default function PageBooking() {
                         </td>
                         <td>
                           {item.payment_type == 1 ? (
-                            <Badge bg="primary">Chuyển khoản</Badge>
+                            <Badge bg="primary">Tiền Mặt</Badge>
                           ) : (
                             <Badge bg="info">TT Online</Badge>
                           )}

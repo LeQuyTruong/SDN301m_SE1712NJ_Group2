@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { Alert, Breadcrumb, Col, Container, Row } from "react-bootstrap";
 import dashboardApi from '../../services/dashboardService';
-import
-	{
-		Chart as ChartJS,
-		CategoryScale,
-		LinearScale,
-		BarElement,
-		Title,
-		Tooltip,
-		Legend,
-		ArcElement
-	} from 'chart.js';
+import { Table } from 'react-bootstrap';
+import {
+	Chart as ChartJS,
+	CategoryScale,
+	LinearScale,
+	BarElement,
+	Title,
+	Tooltip,
+	Legend,
+	ArcElement
+} from 'chart.js';
 import { Bar, Doughnut } from 'react-chartjs-2';
-
+import axios from 'axios';
 ChartJS.register(
 	CategoryScale,
 	LinearScale,
@@ -38,21 +38,18 @@ export const options = {
 };
 
 
-export default function PageHome ()
-{
+export default function PageHome() {
 
-	const [ params, setParams ] = useState( {} );
-	const [ dataCharStatus, setDataChartStatus ] = useState( {} );
-	const [ dataChartListDayInMonth, setDataChartListDayInMonth ] = useState( {} );
-	const [ loadingChartStatus, setLoadingChartStatus ] = useState( true );
+	const [params, setParams] = useState({});
+	const [dataCharStatus, setDataChartStatus] = useState({});
+	const [dataChartListDayInMonth, setDataChartListDayInMonth] = useState({});
+	const [loadingChartStatus, setLoadingChartStatus] = useState(true);
+	const [statistics, setStatistics] = useState([]);
 
-
-	const getDashboard = async ( filters ) =>
-	{
-		const response = await dashboardApi.getStatistics( filters )
-		if ( response?.status === 'success' || response?.status === 200 )
-		{
-			setDataChartStatus( {
+	const getDashboard = async (filters) => {
+		const response = await dashboardApi.getStatistics(filters)
+		if (response?.status === 'success' || response?.status === 200) {
+			setDataChartStatus({
 				labels: response.data.group_status.label,
 				datasets: [
 					{
@@ -77,8 +74,8 @@ export default function PageHome ()
 						borderWidth: 1,
 					},
 				],
-			} )
-			setDataChartListDayInMonth( {
+			})
+			setDataChartListDayInMonth({
 				labels: response.data.list_day,
 				datasets: [
 					{
@@ -94,10 +91,21 @@ export default function PageHome ()
 	}
 
 
-	useEffect( () =>
-	{
-		getDashboard( { ...params } ).then( r => { } );
-	}, [] );
+
+
+	useEffect(() => {
+		axios.get('http://localhost:9998/api/v1/admin/statistics')
+			.then(response => {
+				setStatistics(response.data);
+			})
+			.catch(error => {
+				console.error('Error fetching statistics:', error);
+			});
+	}, []);
+
+	useEffect(() => {
+		getDashboard({ ...params }).then(r => { });
+	}, []);
 
 	return (
 		<Container>
@@ -109,39 +117,36 @@ export default function PageHome ()
 					</Alert>
 				</Col>
 			</Row>
-			<div className="row">
-				<div className="col-sm-3">
-					<div className="box p-3 mb-2 bg-primary text-white">
-						<h6>Thành viên <b id="totalUser">6</b></h6>
-					</div>
-				</div>
-				<div className="col-sm-3">
-					<div className="box p-3 mb-2 bg-danger text-white">
-						<h6>Số phòng <b id="totalProduct">6</b></h6>
-					</div>
-				</div>
-				<div className="col-sm-3">
-					<div className="box p-3 mb-2 bg-info text-white">
-						<h6>Đã booking <b id="totalOrder">9</b>
-						</h6>
-					</div>
-				</div>
-				<div className="col-sm-3">
-					<div className="box p-3 mb-2 bg-secondary text-white">
-						<h6>User mới <b id="totalUserNew">0</b></h6>
-					</div>
-				</div>
-			</div>
+			
+			<div>
+            <h2>Booking Statistics by Month</h2>
+            <Table striped bordered hover>
+                <thead>
+                    <tr>
+                        <th>Month</th>
+                        <th>Number of Bookings</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {statistics.map(stat => (
+                        <tr key={stat._id}>
+                            <td>{stat._id}</td>
+                            <td>{stat.count}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </Table>
+        </div>
 			<Row>
-				<Col className={ 'col-8' }>
-					{ loadingChartStatus === false && (
-						<Bar options={ options } data={ dataChartListDayInMonth } />
-					) }
+				<Col className={'col-8'}>
+					{loadingChartStatus === false && (
+						<Bar options={options} data={dataChartListDayInMonth} />
+					)}
 				</Col>
-				<Col className={ 'col-4' }>
-					{ loadingChartStatus === false && (
-						<Doughnut data={ dataCharStatus } />
-					) }
+				<Col className={'col-4'}>
+					{loadingChartStatus === false && (
+						<Doughnut data={dataCharStatus} />
+					)}
 				</Col>
 			</Row>
 		</Container>
