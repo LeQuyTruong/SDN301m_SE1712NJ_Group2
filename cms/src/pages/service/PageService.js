@@ -4,7 +4,6 @@ import Table from "react-bootstrap/Table";
 import {Link, useNavigate} from "react-router-dom";
 import serviceApi from '../../services/serviceService';
 import {URL_IMG} from "../../common/common";
-
 import {toast} from "react-toastify";
 import { Pagination } from '../../common/form/pagination';
 

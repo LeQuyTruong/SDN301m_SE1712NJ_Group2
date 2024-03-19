@@ -48,6 +48,7 @@ const Header = ( props ) =>
 											} )
 										}
 									</p>
+									
 									<h1 className="mb-4 bread">{ name }</h1>
 								</div>
 							</div>

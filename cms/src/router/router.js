@@ -1,19 +1,14 @@
 import PageHome from "../pages/home/PageHome";
 import NotFound from "../pages/404/NotFound";
-
 import PageArticle from "../pages/article/PageArticle";
 import CreateArticle from "../pages/article/CreateArticle";
 import UpdateArticle from "../pages/article/UpdateArticle";
 import PageRoom from "../pages/room/PageRoom";
 import CreateRoom from "../pages/room/CreateRoom";
 import UpdateRoom from "../pages/room/UpdateRoom";
-import PageService from "../pages/service/PageService";
-import CreateService from "../pages/service/CreateService";
-import UpdateService from "../pages/service/UpdateService";
 import PageUser from "../pages/user/PageUser";
 import CreateUser from "../pages/user/CreateUser";
 import UpdateUser from "../pages/user/UpdateUser";
-
 import PageBooking from "../pages/booking/PageBooking";
 import UpdateBooking from "../pages/booking/UpdateBooking";
 import { LoginPage } from "../pages/auth/Login";
@@ -29,13 +24,13 @@ import CreateAdmin from "../pages/admin/CreateAdmin";
 import UpdateAdmin from "../pages/admin/UpdateAdmin";
 import PageErrorPermission from "../pages/errors/403";
 import AccountUser from "../pages/account/AccountUser";
-import PageMenu from "../pages/menu/PageMenu";
-import CreateMenu from "../pages/menu/CreateMenu";
-import UpdateMenu from "../pages/menu/UpdateMenu";
 import PageCategory from "../pages/category/PageCategory";
 import CreateCategory from "../pages/category/CreateCategory";
 import UpdateCategory from "../pages/category/UpdateCategory";
 import UpdatePayment from "../pages/booking/UpdatePayment";
+import PageMenu from "../pages/menu/PageMenu";
+import CreateMenu from "../pages/menu/CreateMenu";
+import UpdateMenu from "../pages/menu/UpdateMenu";
 
 export const routes = () =>
 {
@@ -133,27 +128,6 @@ export const routes = () =>
 					path: "updatePayment/:id",
 					element: <UpdatePayment />,
 				},
-			]
-		},
-		{
-			path: "/service/",
-			children: [
-				{
-					path: "",
-					element: <PageService />,
-				},
-				{
-					path: "create",
-					element: <CreateService />,
-				},
-				{
-					path: "update/:id",
-					element: <UpdateService />,
-				},
-				{
-					path: "*",
-					element: <PageService />,
-				}
 			]
 		},
 		{
