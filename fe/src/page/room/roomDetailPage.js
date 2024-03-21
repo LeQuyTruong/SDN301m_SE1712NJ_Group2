@@ -111,7 +111,7 @@ const RoomDetailPage = () =>
 								detailData && <Row>
 									<Col md={ 12 }>
 										<Row className="mb-5">
-											<div className="w-md-50 w-100 col-md-6">
+											<div className="w-md-50 w-100 col-md-6">z
 												<img
 													src={ images && buildImageV2( images ) || DEFAULT_IMG }
 													className="room-img mb-0 w-100 h-75 " onError={ onErrorImg } />
@@ -157,7 +157,16 @@ const RoomDetailPage = () =>
 												<div className="fields">
 													<button className="btn btn-primary py-3 px-5" style={ { borderRadius: '5px' } } onClick={ () =>
 													{
-														navigate( '/booking/create/' + detailData._id )
+														// Kiểm tra xem có token truy cập trong localStorage không
+														const accessToken = localStorage.getItem('access_token');
+														
+														if (!accessToken) {
+															// Nếu không có token, chuyển hướng người dùng tới trang đăng nhập
+															navigate('/sign-in');
+														} else {
+															// Nếu có token, chuyển hướng người dùng tới trang booking
+															navigate('/booking/create/' + detailData._id);
+														}
 													} }>
 														Book
 													</button>

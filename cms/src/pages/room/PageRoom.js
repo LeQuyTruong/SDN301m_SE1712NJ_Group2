@@ -91,7 +91,7 @@ export default function PageRoom ()
 									<th>Category</th>
 									<th>Price</th>
 									<th>Info</th>
-									<th>Status</th>
+									{/* <th>Status</th> */}
 									<th>Created</th>
 									<th>Action</th>
 								</tr>
@@ -120,9 +120,9 @@ export default function PageRoom ()
 														<li>RoomCode: { item.room_code }</li>
 													</ul>
 												</td>
-												<td>
+												{/* <td>
 													<Badge bg="info">{ item.status }</Badge>
-												</td>
+												</td> */}
 												<td>{ moment( item.created_at ).format( "MM-DD-YYYY H:mm:ss" ) }</td>
 												<td>
 													<Button variant="danger" size="sm" onClick={ () => handleDelete( item._id ) }>

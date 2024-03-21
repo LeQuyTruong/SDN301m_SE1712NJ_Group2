@@ -137,7 +137,7 @@ export default function PageHome() {
                 </tbody>
             </Table>
         </div>
-			<Row>
+			{/* <Row>
 				<Col className={'col-8'}>
 					{loadingChartStatus === false && (
 						<Bar options={options} data={dataChartListDayInMonth} />
@@ -148,7 +148,7 @@ export default function PageHome() {
 						<Doughnut data={dataCharStatus} />
 					)}
 				</Col>
-			</Row>
+			</Row> */}
 		</Container>
 	);
 }
